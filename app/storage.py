@@ -242,7 +242,8 @@ def update_status(submission_id: str, status: str) -> dict | None:
     if cursor.rowcount == 0:
         return None
     record = get(submission_id)
-    logger.info("Statuss mainīts: %s", record)
+    # Žurnālā tikai ID un statuss. Ierakstā ir personas dati.
+    logger.info("Statuss mainīts: %s -> %s", submission_id, status)
     return record
 
 
