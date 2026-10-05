@@ -149,10 +149,6 @@ def test_cra_ac7_audit_withdraw(client, make_submission):
     assert withdraw_entries[0]["detail"] == VALID_REASON
 
 
-@pytest.mark.skip(
-    reason="CR-A precizējums 'Vai var atsaukt FORWARDED?' ir atvērts. "
-    "Sagaidāmo rezultātu jāapstiprina produkta īpašniekam."
-)
 def test_cra_forwarded_409(client, make_submission):
     submission = make_submission("FORWARDED")
 
