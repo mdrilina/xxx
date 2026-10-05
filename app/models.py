@@ -4,7 +4,7 @@ import re
 from datetime import date, datetime
 from enum import Enum
 
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, Field, field_validator
 from pydantic_core import PydanticCustomError
 
 # CR-1: 11 cipari vai DDMMYY-NNNNN. Tikai formāts, bez kontrolcipara.
@@ -92,6 +92,12 @@ class SubmissionListItem(BaseModel):
     receivedAt: datetime
     dueDate: date
     replyChannel: ReplyChannel
+
+
+class WithdrawRequest(BaseModel):
+    """CR-A: atsaukšanas iemesls, 10–500 rakstzīmes."""
+
+    reason: str = Field(min_length=10, max_length=500)
 
 
 class AuditEntry(BaseModel):
